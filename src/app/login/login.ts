@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 declare const google: any;
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './login.html',
   styleUrls: ['./login.less']
 })
 export class LoginComponent implements OnInit {
-  constructor(private http: HttpClient) { }
+
+  userInput: string = '';
+  password: string = '';
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     google.accounts.id.initialize({
@@ -26,6 +32,26 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  loginTradicional(): void {
+    console.log("Intentando login tradicional con:", this.userInput);
+
+    this.http.post<any>('https://localhost:7188/api/Auth/login', {
+      userName: this.userInput,
+      password: this.password
+    }).subscribe({
+      next: (data) => {
+        console.log("Login tradicional exitoso:", data);
+        localStorage.setItem('jwt', data.token);
+        alert("Login exitoso con usuario o correo!");
+        this.router.navigate(['/bienvenido']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert("Usuario o contraseña incorrectos.");
+      }
+    });
+  }
+
   handleCredentialResponse(response: any): void {
     console.log("Token Google:", response.credential);
 
@@ -33,9 +59,10 @@ export class LoginComponent implements OnInit {
       tokenGoogle: response.credential
     }).subscribe({
       next: (data) => {
-        console.log("Respuesta backend:", data);
+        console.log("Login Google exitoso:", data);
         localStorage.setItem('jwt', data.token);
         alert("Login exitoso con Google! JWT guardado.");
+        this.router.navigate(['/bienvenido']);
       },
       error: (err) => {
         console.error(err);

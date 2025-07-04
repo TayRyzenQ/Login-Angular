@@ -1,26 +1,96 @@
+@primary-color: #667eea;
+@secondary-color: #764ba2;
 
 .login-container {
-  width: 400px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #ddd;
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, @primary-color, @secondary-color);
+  font-family: 'Poppins', sans-serif;
+}
 
-  input {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
+.login-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: white;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
   }
 
-  button {
+  input {
     width: 100%;
-    padding: 10px;
-    background: #3b82f6;
-    color: #fff;
+    padding: 12px 16px;
+    margin: 10px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+
+    &::placeholder {
+      color: #ffffffaa;
+    }
+
+    &:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .btn-login {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .divider {
+    margin: 20px 0;
+    color: #ffffffaa;
+  }
+
+  .btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    color: #333;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    img {
+      height: 20px;
+      width: 20px;
+    }
+
+    &:hover {
+      background: #eee;
+    }
   }
 }
