@@ -1,0 +1,34 @@
+<div class="clima-container">
+  <h2>Consulta el Clima</h2>
+
+  <input type="text" placeholder="Escribe una ciudad" [(ngModel)]="ciudad" />
+
+  <button (click)="buscarClima()">Buscar</button>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="climaData" class="resultado">
+    <div class="card">
+      <h3>Ciudad</h3>
+      <p>{{ climaData.name }}</p>
+    </div>
+    <div class="card">
+      <h3>Temperatura</h3>
+      <p>{{ climaData.main.temp }} °C</p>
+    </div>
+    <div class="card">
+      <h3>Descripción</h3>
+      <p>{{ climaData.weather[0].description }}</p>
+    </div>
+    <div class="card">
+      <h3>Humedad</h3>
+      <p>{{ climaData.main.humidity }} %</p>
+    </div>
+    <div class="card">
+      <h3>Viento</h3>
+      <p>{{ climaData.wind.speed }} m/s</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<header class="header">
+  <div class="logo">Mi App Angular</div>
+  <nav class="nav">
+    <a routerLink="/dashboard/bienvenida" routerLinkActive="active-link">Inicio</a>
+    <a routerLink="/dashboard/clima" routerLinkActive="active-link">Clima</a>
+    <a routerLink="/dashboard/banxico" routerLinkActive="active-link">Banxico</a>
+    <button (click)="logout()">Cerrar sesión</button>
+  </nav>
+</header>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>

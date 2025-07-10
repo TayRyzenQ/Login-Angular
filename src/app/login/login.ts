@@ -12,6 +12,7 @@ declare const google: any;
   imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './login.html',
   styleUrls: ['./login.less']
+  
 })
 export class LoginComponent implements OnInit {
 
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
         console.log("Login tradicional exitoso:", data);
         localStorage.setItem('jwt', data.token);
         alert("Login exitoso con usuario o correo!");
-        this.router.navigate(['/bienvenido']);
+        this.router.navigate(['/dashboard']);
       },
       error: (err) => {
         console.error(err);
@@ -53,21 +54,23 @@ export class LoginComponent implements OnInit {
   }
 
   handleCredentialResponse(response: any): void {
-    console.log("Token Google:", response.credential);
+  console.log("Token Google:", response.credential);
 
-    this.http.post<any>('https://localhost:7188/api/Auth/google', {
-      tokenGoogle: response.credential
-    }).subscribe({
-      next: (data) => {
-        console.log("Login Google exitoso:", data);
-        localStorage.setItem('jwt', data.token);
-        alert("Login exitoso con Google! JWT guardado.");
-        this.router.navigate(['/bienvenido']);
-      },
-      error: (err) => {
-        console.error(err);
-        alert("Error al autenticar con el backend.");
-      }
-    });
-  }
+  this.http.post<any>('https://localhost:7188/api/Auth/google', {
+    tokenGoogle: response.credential
+  }).subscribe({
+    next: (data) => {
+      console.log("Login Google exitoso:", data);
+      localStorage.setItem('jwt', data.token);
+      alert("Login exitoso con Google! JWT guardado.");
+      this.router.navigate(['/dashboard']);
+    },
+    error: (err) => {
+      console.error(err);
+      alert("Error al autenticar con el backend.");
+    }
+  });
+}
+
+  
 }

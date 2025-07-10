@@ -1,0 +1,12 @@
+<div class="banxico-container">
+  <h2>Consulta Banxico</h2>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="tipoCambio">
+    <p><strong>Fecha:</strong> {{ tipoCambio.fecha }}</p>
+    <p><strong>Tipo de cambio:</strong> {{ tipoCambio.tipoCambio }}</p>
+  </div>
+</div>
