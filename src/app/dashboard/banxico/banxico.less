@@ -1,27 +1,106 @@
-.banxico-container {
-  max-width: 700px;
-  margin: 3rem auto;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  padding: 2.5rem;
-  border-radius: 15px;
-  text-align: center;
-  color: #fff;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+.converter {
+  margin-top: 2rem;
 
-  h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+  label {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
   }
 
-  .error {
-    color: #ff4b5c;
-    margin-top: 1rem;
-    font-weight: bold;
+  input {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    width: 100px;
+    border-radius: 5px;
+    border: none;
   }
 
   p {
+    margin-top: 1rem;
     font-size: 1.5rem;
-    margin: 0.5rem 0;
+    color: #00ffcc;
+    font-weight: bold;
+  }
+}
+.banxico-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  background: linear-gradient(145deg, #4a00e0, #8e2de2);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .rate {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: #00ffcc;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .icon {
+      width: 50px;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      width: 200px;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    button {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        background: linear-gradient(90deg, #0072ff, #00c6ff);
+      }
+    }
+
+    p {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: #00ffcc;
+      font-weight: bold;
+    }
   }
 }

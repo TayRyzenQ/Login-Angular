@@ -1,12 +1,29 @@
 <div class="banxico-container">
-  <h2>Consulta Banxico</h2>
+  <h2>Conversor Banxico</h2>
 
-  <div *ngIf="error" class="error">
-    {{ error }}
-  </div>
+  <p class="rate">
+    <strong>Tipo de cambio FIX:</strong> {{ tipoCambio?.tipoCambio }} MXN
+  </p>
 
-  <div *ngIf="tipoCambio">
-    <p><strong>Fecha:</strong> {{ tipoCambio.fecha }}</p>
-    <p><strong>Tipo de cambio:</strong> {{ tipoCambio.tipoCambio }}</p>
+  <div class="row">
+    <!-- Columna USD a MXN -->
+    <div class="card">
+      <h3>Dólares a Pesos</h3>
+      <input type="number" [(ngModel)]="usd" placeholder="Cantidad en USD">
+      <button (click)="convertirDolaresAMXN()">Convertir a MXN</button>
+      <p *ngIf="conversionResultUSD !== null">
+        <strong>{{ usd }}</strong> USD = <strong>{{ conversionResultUSD | number:'1.2-2' }}</strong> MXN
+      </p>
+    </div>
+
+    <!-- Columna MXN a USD -->
+    <div class="card">
+      <h3>Pesos a Dólares</h3>
+      <input type="number" [(ngModel)]="mxn" placeholder="Cantidad en MXN">
+      <button (click)="convertirMXNaUSD()">Convertir a USD</button>
+      <p *ngIf="conversionResultMXN !== null">
+        <strong>{{ mxn }}</strong> MXN = <strong>{{ conversionResultMXN | number:'1.2-2' }}</strong> USD
+      </p>
+    </div>
   </div>
 </div>

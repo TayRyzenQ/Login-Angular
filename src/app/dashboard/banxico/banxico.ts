@@ -2,17 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { BanxicoService } from '../../services/banxico';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-banxico',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './banxico.html',
   styleUrls: ['./banxico.less']
 })
-export class BanxicoComponent implements OnInit {
 
-  tipoCambio: any;
+export class BanxicoComponent implements OnInit {
+  usd: number = 1;
+  mxn: number = 0;          // Monto en pesos mexicanos
+  conversionResultUSD: number | null = null;
+  conversionResultMXN: number | null = null;  tipoCambio: any;
   error: string = '';
 
   constructor(private banxicoService: BanxicoService) { }
@@ -22,6 +26,7 @@ export class BanxicoComponent implements OnInit {
   }
 
   obtenerTipoCambio() {
+    
     this.banxicoService.obtenerTipoCambio().subscribe({
       next: (data) => {
         console.log('Banxico', data);
@@ -34,4 +39,16 @@ export class BanxicoComponent implements OnInit {
       }
     });
   }
+
+ convertirDolaresAMXN() {
+  if (this.tipoCambio && this.usd !== null) {
+    this.conversionResultUSD = this.usd * this.tipoCambio.tipoCambio;
+  }
+}
+
+convertirMXNaUSD() {
+  if (this.tipoCambio && this.mxn !== null) {
+    this.conversionResultMXN = this.mxn / this.tipoCambio.tipoCambio;
+  }
+}
 }
