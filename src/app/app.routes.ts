@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard';
 import { BienvenidaComponent } from './dashboard/bienvenida/bienvenida';
 import { ClimaComponent } from './dashboard/clima/clima';
 import { BanxicoComponent } from './dashboard/banxico/banxico';
-
+import { ContactComponent } from './dashboard/contact/contact';
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
@@ -15,6 +15,7 @@ export const routes: Routes = [
       { path: 'bienvenida', component: BienvenidaComponent },
       { path: 'clima', component: ClimaComponent },
       { path: 'banxico', component: BanxicoComponent },
+      { path: 'contact', component: ContactComponent }, // ✅ nueva ruta
     ],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

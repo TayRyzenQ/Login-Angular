@@ -1,11 +1,31 @@
-<div class="welcome-container">
-  <h2>¡Bienvenido a Mi App Angular!</h2>
-  <p>Has iniciado sesión correctamente.</p>
-  <p>Usa el menú de arriba para acceder a:</p>
-  <ul>
-    <li>Consultar el clima en tu ciudad.</li>
-    <li>Consultar tasas de cambio Banxico.</li>
-  </ul>
+<div class="welcome-hero">
+  <div class="overlay"></div>
+  <div class="welcome-content">
+    <h1>¡Bienvenido a Mi App Angular!</h1>
+    <p class="subtitle">
+      Gracias por iniciar sesión. ¡Explora nuestras funciones!
+    </p>
 
-  <p>¡Gracias por usar nuestra aplicación!</p>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Clima en tu ciudad</h3>
+        <p>Consulta información meteorológica actualizada.</p>
+        <!-- <a routerLink="/dashboard/clima" class="btn-primary">Ir al clima</a> -->
+      </div>
+      <div class="feature-card">
+        <h3>Tasas Banxico</h3>
+        <p>Revisa los tipos de cambio oficiales del Banco de México.</p>
+        <!-- <a routerLink="/dashboard/banxico" class="btn-primary">Ir a Banxico</a> -->
+      </div>
+      <div class="feature-card">
+        <h3>Contacto</h3>
+        <p>¡Envíanos tus dudas o comentarios!</p>
+        <!-- <a routerLink="/dashboard/contact" class="btn-primary">Ir a Contacto</a> -->
+      </div>
+    </div>
+
+    <p class="footer-text">
+      ¡Gracias por usar nuestra aplicación!
+    </p>
+  </div>
 </div>

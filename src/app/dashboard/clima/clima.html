@@ -1,34 +1,38 @@
-<div class="clima-container">
-  <h2>Consulta el Clima</h2>
+<div class="weather-channel-container">
+  <h1>{{ climaData?.name || 'Consulta el Clima' }}</h1>
+  <p class="subtitle">Consulta información detallada sobre el clima de tu ciudad</p>
 
-  <input type="text" placeholder="Escribe una ciudad" [(ngModel)]="ciudad" />
-
-  <button (click)="buscarClima()">Buscar</button>
+  <div class="search-box">
+    <input type="text" placeholder="Escribe una ciudad" [(ngModel)]="ciudad" />
+    <button (click)="buscarClima()">
+      <span>🔍</span> Buscar
+    </button>
+  </div>
 
   <div *ngIf="error" class="error">
     {{ error }}
   </div>
 
-  <div *ngIf="climaData" class="resultado">
-    <div class="card">
-      <h3>Ciudad</h3>
-      <p>{{ climaData.name }}</p>
+  <div *ngIf="climaData" class="weather-grid">
+    <div class="weather-circle">
+      <img [src]="'https://openweathermap.org/img/wn/' + climaData.weather[0].icon + '@4x.png'" alt="icon" />
+      <h2>{{ climaData.main.temp }}°C</h2>
+      <p>{{ climaData.weather[0].description | titlecase }}</p>
     </div>
-    <div class="card">
-      <h3>Temperatura</h3>
-      <p>{{ climaData.main.temp }} °C</p>
+    <div class="weather-circle">
+      <span>💧</span>
+      <h3>{{ climaData.main.humidity }}%</h3>
+      <p>Humedad</p>
     </div>
-    <div class="card">
-      <h3>Descripción</h3>
-      <p>{{ climaData.weather[0].description }}</p>
+    <div class="weather-circle">
+      <span>🌬️</span>
+      <h3>{{ climaData.wind.speed }} m/s</h3>
+      <p>Viento</p>
     </div>
-    <div class="card">
-      <h3>Humedad</h3>
-      <p>{{ climaData.main.humidity }} %</p>
-    </div>
-    <div class="card">
-      <h3>Viento</h3>
-      <p>{{ climaData.wind.speed }} m/s</p>
+    <div class="weather-circle">
+      <span>🌡️</span>
+      <h3>{{ climaData.main.feels_like }}°C</h3>
+      <p>Sensación</p>
     </div>
   </div>
 </div>
